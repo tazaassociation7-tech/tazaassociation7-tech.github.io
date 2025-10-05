@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جمعية تازة الكبرى للتجارة والصناعة والخدمات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.95), rgba(184, 34, 34, 0.95)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23006233" width="100" height="100"/></svg>');
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .title-section h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-section p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 20px;
+        }
+
+        nav a {
+            color: #8B0000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: #8B0000;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23654321" width="100" height="100"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #8B0000;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #8B0000;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, #8B0000, #B22222);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            color: #8B0000;
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: #8B0000;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            transform: translateX(-5px);
+        }
+
+        .add-blog-btn {
+            background: #8B0000;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .add-blog-btn:hover {
+            background: #B22222;
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-content h3 {
+            color: #8B0000;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B0000;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #8B0000;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #B22222;
+        }
+
+        .btn-secondary {
+            background: #ddd;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #ccc;
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .title-section h1 {
+                font-size: 1.5rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .blogs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="60" width="60" height="35" fill="#8B4513"/>
+                        <rect x="25" y="40" width="15" height="25" fill="#A0522D"/>
+                        <rect x="45" y="30" width="15" height="35" fill="#A0522D"/>
+                        <rect x="65" y="40" width="15" height="25" fill="#A0522D"/>
+                    </svg>
+                </div>
+                <div class="title-section">
+                    <h1>جمعية تازة الكبرى</h1>
+                    <p>للتجارة والصناعة والخدمات</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="active">الرئيسية</a>
+            <a href="#blogs">المدونات</a>
+            <a href="#about">من نحن</a>
+            <a href="#contact">اتصل بنا</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h2>مرحباً بكم في جمعية تازة الكبرى</h2>
+        <p>نعمل على تعزيز التجارة والصناعة والخدمات في مدينة تازة وتطوير الاقتصاد المحلي</p>
+    </div>
+
+    <div class="container" id="blogs">
+        <h2 class="section-title">آخر المقالات والأخبار</h2>
+        
+        <button class="add-blog-btn" onclick="openModal()">+ إضافة مقال جديد</button>
+
+        <div class="blogs-grid" id="blogsGrid">
+            <div class="blog-card">
+                <div class="blog-image">📰</div>
+                <div class="blog-content">
+                    <div class="blog-date">5 أكتوبر 2025</div>
+                    <h3 class="blog-title">افتتاح معرض تازة للتجارة</h3>
+                    <p class="blog-excerpt">تم افتتاح معرض تازة للتجارة والصناعة بحضور عدد كبير من التجار والصناعيين من مختلف مناطق المملكة...</p>
+                    <a href="#" class="read-more">← اقرأ المزيد</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">💼</div>
+                <div class="blog-content">
+                    <div class="blog-date">3 أكتوبر 2025</div>
+                    <h3 class="blog-title">ورشة عمل حول ريادة الأعمال</h3>
+                    <p class="blog-excerpt">نظمت الجمعية ورشة عمل متخصصة في مجال ريادة الأعمال والابتكار لفائدة الشباب المقبلين على إنشاء مشاريعهم...</p>
+                    <a href="#" class="read-more">← اقرأ المزيد</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image">🏭</div>
+                <div class="blog-content">
+                    <div class="blog-date">1 أكتوبر 2025</div>
+                    <h3 class="blog-title">تطوير القطاع الصناعي بتازة</h3>
+                    <p class="blog-excerpt">مبادرة جديدة لدعم الصناعات المحلية وتشجيع الاستثمار في المنطقة الصناعية بمدينة تازة...</p>
+                    <a href="#" class="read-more">← اقرأ المزيد</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="blogModal">
+        <div class="modal-content">
+            <h3>إضافة مقال جديد</h3>
+            <form id="blogForm">
+                <div class="form-group">
+                    <label>عنوان المقال</label>
+                    <input type="text" id="blogTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>التاريخ</label>
+                    <input type="date" id="blogDate" required>
+                </div>
+                <div class="form-group">
+                    <label>محتوى المقال</label>
+                    <textarea id="blogContent" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>أيقونة (emoji)</label>
+                    <input type="text" id="blogIcon" placeholder="مثال: 📰" maxlength="2">
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">إلغاء</button>
+                    <button type="submit" class="btn btn-primary">نشر المقال</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 جمعية تازة الكبرى للتجارة والصناعة والخدمات - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        let blogs = [];
+
+        function openModal() {
+            document.getElementById('blogModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('blogModal').classList.remove('active');
+            document.getElementById('blogForm').reset();
+        }
+
+        document.getElementById('blogForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('blogTitle').value;
+            const date = document.getElementById('blogDate').value;
+            const content = document.getElementById('blogContent').value;
+            const icon = document.getElementById('blogIcon').value || '📄';
+
+            const formattedDate = new Date(date).toLocaleDateString('ar-MA', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            const excerpt = content.substring(0, 150) + '...';
+
+            const blogCard = document.createElement('div');
+            blogCard.className = 'blog-card';
+            blogCard.innerHTML = `
+                <div class="blog-image">${icon}</div>
+                <div class="blog-content">
+                    <div class="blog-date">${formattedDate}</div>
+                    <h3 class="blog-title">${title}</h3>
+                    <p class="blog-excerpt">${excerpt}</p>
+                    <a href="#" class="read-more">← اقرأ المزيد</a>
+                </div>
+            `;
+
+            document.getElementById('blogsGrid').insertBefore(
+                blogCard, 
+                document.getElementById('blogsGrid').firstChild
+            );
+
+            closeModal();
+        });
+
+        document.getElementById('blogModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
