@@ -114,16 +114,14 @@
             transform: translateY(-2px);
         }
 
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23654321" width="100" height="100"/></svg>');
-            background-size: cover;
-            background-position: center;
-            padding: 5rem 20px;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
+          header {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.85), rgba(184, 34, 34, 0.85)), 
+                url('images/background.jpg');
+                /* ... reste du code ... */
+                   background-size: cover;
+                   background-position: center;
+                      background-repeat: no-repeat;
+       }
 
         .hero h2 {
             font-size: 2.5rem;
@@ -490,7 +488,7 @@
             const title = document.getElementById('blogTitle').value;
             const date = document.getElementById('blogDate').value;
             const content = document.getElementById('blogContent').value;
-            const icon = document.getElementById('blogIcon').value || '📄';
+            
 
             const formattedDate = new Date(date).toLocaleDateString('ar-MA', {
                 year: 'numeric',
